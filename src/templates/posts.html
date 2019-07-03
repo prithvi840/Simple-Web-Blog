@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>{{ blog_title }}</h2>
+    <a href="/posts/new/{{ blog_id }}"><button class="btn btn-primary">New Post</button></a>
+    {% if posts|length > 0 %}
+        {% for post in posts %}
+            <div class="alert alert-primary">
+                <h3>{{ post.title }}</h3>
+            </div>
+            <div class="alert alert-success">
+                <p>{{ post.content }}</p>
+            </div>
+            <div class="alert alert-dark">
+                <p>{{ post.author }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning">
+            <p>There are no posts yet!!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
